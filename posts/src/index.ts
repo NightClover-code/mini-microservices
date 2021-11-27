@@ -1,5 +1,4 @@
 import express from 'express';
-import fs from 'fs';
 import { v4 as randomID } from 'uuid';
 const bodyParser = require('body-parser')();
 
@@ -10,8 +9,7 @@ app.use(bodyParser);
 const posts: any = {};
 
 app.get('/posts', (req, res) => {
-  const posts = fs.readFileSync('posts.json', { encoding: 'utf8' });
-  res.send(JSON.parse(posts));
+  res.send(posts);
 });
 
 app.post('/posts', (req, res) => {
@@ -20,7 +18,6 @@ app.post('/posts', (req, res) => {
 
   posts[id] = { id, title };
 
-  fs.writeFileSync('posts.json', JSON.stringify(posts));
   res.status(201).send(posts[id]);
 });
 
