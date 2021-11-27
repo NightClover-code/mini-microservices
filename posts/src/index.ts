@@ -1,10 +1,10 @@
 import express from 'express';
 import { v4 as randomID } from 'uuid';
-const bodyParser = require('body-parser')();
+import bodyParser from 'body-parser';
 
 const app = express();
 
-app.use(bodyParser);
+app.use(bodyParser.json());
 
 const posts: any = {};
 
