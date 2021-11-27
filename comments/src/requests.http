@@ -1,0 +1,10 @@
+### creating a comment
+POST http://localhost:4001/posts/1/comments
+content-type: application/json
+
+{
+    "content": "Hii I'm a comment"
+}
+
+### getting comments
+GET http://localhost:4001/posts/1/comments
