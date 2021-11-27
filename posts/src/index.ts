@@ -1,6 +1,6 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import { v4 as randomID } from 'uuid';
+const bodyParser = require('body-parser')();
 
 const app = express();
 
@@ -8,9 +8,11 @@ app.use(bodyParser);
 
 const posts: any = {};
 
-app.get('posts', (req, res) => {});
+app.get('/posts', (req, res) => {
+  res.send(posts);
+});
 
-app.post('posts', (req, res) => {
+app.post('/posts', (req, res) => {
   const id = randomID();
   const title = req.body;
 
