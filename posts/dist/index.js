@@ -70,4 +70,8 @@ app.post('/posts', function (req, res) { return __awaiter(void 0, void 0, void 0
         }
     });
 }); });
+app.post('/events', function (req, res) {
+    console.log('Received Event', req.body.type);
+    res.send({ status: 'OK' });
+});
 app.listen(4000, function () { return console.log("Listening on 4000"); });
