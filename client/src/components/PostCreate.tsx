@@ -7,6 +7,8 @@ const PostCreate = () => {
   const onSumbitHandler = async (e: FormEvent<HTMLElement>) => {
     e.preventDefault();
 
+    if (!title.length) return null;
+
     await postsAPI.post('/posts', {
       title,
     });
