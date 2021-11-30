@@ -6,7 +6,9 @@ import CommentList from './CommentList';
 import { Post } from '../interfaces';
 
 const PostList = () => {
-  const [posts, setPosts] = useState<Post | {}>({});
+  const defaultPost = { id: '', title: '' };
+
+  const [posts, setPosts] = useState<Post>(defaultPost);
 
   const fetchPosts = async () => {
     const { data }: { data: Post } = await postsAPI.get('/posts');
