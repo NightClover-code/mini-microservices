@@ -1,10 +1,10 @@
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 import { postsAPI } from '../utils';
 
 const PostCreate = () => {
   const [title, setTitle] = useState('');
 
-  const onSumbitHandler = async (e: FormEvent<HTMLElement>) => {
+  const onSumbitHandler = async (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
 
     if (!title.length) return null;
