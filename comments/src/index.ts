@@ -2,6 +2,7 @@ import express from 'express';
 import { v4 as randomId } from 'uuid';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import { eventsAPI } from './utils';
 
 const app = express();
 
@@ -14,7 +15,7 @@ app.get('/posts/:id/comments', (req, res) => {
   res.send(commentsByPostId[req.params.id] || []);
 });
 
-app.post('/posts/:id/comments', (req, res) => {
+app.post('/posts/:id/comments', async (req, res) => {
   const id = randomId();
   const { content } = req.body;
 
@@ -24,6 +25,11 @@ app.post('/posts/:id/comments', (req, res) => {
   comments.push(createdComment);
 
   commentsByPostId[req.params.id] = comments;
+
+  await eventsAPI.post('/events', {
+    type: 'CommentCreated',
+    data: { id, content, postId: req.params.id },
+  });
 
   res.status(201).send(createdComment);
 });
