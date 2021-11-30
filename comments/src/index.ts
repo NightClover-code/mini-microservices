@@ -1,10 +1,12 @@
 import express from 'express';
-import { v4 as randomID } from 'uuid';
+import { v4 as randomId } from 'uuid';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 const commentsByPostId: any = {};
 
@@ -13,7 +15,7 @@ app.get('/posts/:id/comments', (req, res) => {
 });
 
 app.post('/posts/:id/comments', (req, res) => {
-  const id = randomID();
+  const id = randomId();
   const { content } = req.body;
 
   const comments = commentsByPostId[req.params.id] || [];
