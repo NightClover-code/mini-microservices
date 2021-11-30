@@ -7,10 +7,12 @@ interface CommentCreateProps {
 }
 
 const CommentList: React.FC<CommentCreateProps> = ({ postId }) => {
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState<Comment[]>([]);
 
   const fetchData = async () => {
-    const { data } = await commentsAPI.get(`/posts/${postId}/comments`);
+    const { data }: { data: Comment[] } = await commentsAPI.get(
+      `/posts/${postId}/comments`
+    );
 
     setComments(data);
   };

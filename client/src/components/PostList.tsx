@@ -3,12 +3,13 @@ import { postsAPI } from '../utils';
 import { v4 as randomId } from 'uuid';
 import CommentCreate from './CommentCreate';
 import CommentList from './CommentList';
+import { Post } from '../interfaces';
 
 const PostList = () => {
-  const [posts, setPosts] = useState({});
+  const [posts, setPosts] = useState<Post | {}>({});
 
   const fetchPosts = async () => {
-    const { data } = await postsAPI.get('/posts');
+    const { data }: { data: Post } = await postsAPI.get('/posts');
 
     setPosts(data);
   };
