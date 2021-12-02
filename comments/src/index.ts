@@ -16,22 +16,23 @@ app.get('/posts/:id/comments', (req, res) => {
 });
 
 app.post('/posts/:id/comments', async (req, res) => {
+  const postId = req.params.id;
   const id = randomId();
   const { content } = req.body;
 
-  const comments = commentsByPostId[req.params.id] || [];
+  const comments = commentsByPostId[postId] || [];
   const createdComment = { id, content };
 
   comments.push(createdComment);
 
-  commentsByPostId[req.params.id] = comments;
+  commentsByPostId[postId] = comments;
 
   await eventsAPI.post('/events', {
     type: 'CommentCreated',
-    data: { id, content, postId: req.params.id },
+    data: { id, content, postId },
   });
 
-  res.status(201).send(createdComment);
+  res.status(201).send({ ...createdComment, postId });
 });
 
 app.post('/events', (req, res) => {

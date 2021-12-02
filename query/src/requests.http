@@ -1,0 +1,2 @@
+### Getting all posts with comments
+GET http://localhost:4000/posts
