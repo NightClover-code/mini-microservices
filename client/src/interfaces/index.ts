@@ -1,6 +1,9 @@
-export interface Post {
-  id: string;
-  title: string;
+export interface Posts {
+  [id: string]: {
+    id: string;
+    title: string;
+    comments: Comment[];
+  };
 }
 
 export interface Comment {

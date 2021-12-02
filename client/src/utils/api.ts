@@ -7,3 +7,7 @@ export const postsAPI = axios.create({
 export const commentsAPI = axios.create({
   baseURL: 'http://localhost:4001',
 });
+
+export const queryAPI = axios.create({
+  baseURL: 'http://localhost:4002',
+});

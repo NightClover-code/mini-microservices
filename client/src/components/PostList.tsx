@@ -1,17 +1,15 @@
 import { useEffect, useState } from 'react';
-import { postsAPI } from '../utils';
+import { queryAPI } from '../utils';
 import { v4 as randomId } from 'uuid';
 import CommentCreate from './CommentCreate';
 import CommentList from './CommentList';
-import { Post } from '../interfaces';
+import { Posts } from '../interfaces';
 
 const PostList = () => {
-  const defaultPost = { id: '', title: '' };
-
-  const [posts, setPosts] = useState<Post>(defaultPost);
+  const [posts, setPosts] = useState<Posts>({});
 
   const fetchPosts = async () => {
-    const { data }: { data: Post } = await postsAPI.get('/posts');
+    const { data }: { data: Posts } = await queryAPI.get('/posts');
 
     setPosts(data);
   };
@@ -20,7 +18,7 @@ const PostList = () => {
     fetchPosts();
   }, []);
 
-  const renderedPosts = Object.values(posts).map((post: any) => {
+  const renderedPosts = Object.values(posts).map(post => {
     return (
       <div
         className="card"
@@ -29,7 +27,7 @@ const PostList = () => {
       >
         <div className="card-body">
           <h3>{post.title}</h3>
-          <CommentList postId={post.id} />
+          <CommentList comments={post.comments} />
           <CommentCreate postId={post.id} />
         </div>
       </div>
