@@ -9,4 +9,5 @@ export interface Posts {
 export interface Comment {
   id: string;
   content: string;
+  status: 'approved' | 'rejected' | 'pending';
 }
