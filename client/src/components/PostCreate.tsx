@@ -1,3 +1,4 @@
+//importing hooks & utils
 import { useState } from 'react';
 import { postsAPI } from '../utils';
 

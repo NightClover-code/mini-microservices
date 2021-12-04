@@ -1,9 +1,12 @@
+//importing hooks
 import { useEffect, useState } from 'react';
+//importing types & utils
 import { queryAPI } from '../utils';
+import { Posts } from '../interfaces';
 import { v4 as randomId } from 'uuid';
+//importing components
 import CommentCreate from './CommentCreate';
 import CommentList from './CommentList';
-import { Posts } from '../interfaces';
 
 const PostList = () => {
   const [posts, setPosts] = useState<Posts>({});
