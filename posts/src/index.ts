@@ -1,7 +1,7 @@
 import express from 'express';
+import cors from 'cors';
 import { v4 as randomId } from 'uuid';
 import bodyParser from 'body-parser';
-import cors from 'cors';
 import { eventsAPI, Post } from './utils';
 
 const app = express();
