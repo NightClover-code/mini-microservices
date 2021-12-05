@@ -21,7 +21,7 @@ app.post('/posts/:id/comments', async (req, res) => {
   const { content } = req.body;
 
   const comments = commentsByPostId[postId] || [];
-  const createdComment = { id, content };
+  const createdComment = { id, content, status: 'pending' };
 
   comments.push(createdComment);
 
@@ -29,7 +29,7 @@ app.post('/posts/:id/comments', async (req, res) => {
 
   await eventsAPI.post('/events', {
     type: 'CommentCreated',
-    data: { id, content, postId },
+    data: { id, content, postId, status: 'pending' },
   });
 
   res.status(201).send({ ...createdComment, postId });

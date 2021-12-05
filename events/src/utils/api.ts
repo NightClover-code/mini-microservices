@@ -11,3 +11,7 @@ export const commentsAPI = axios.create({
 export const queryAPI = axios.create({
   baseURL: 'http://localhost:4002',
 });
+
+export const moderationAPI = axios.create({
+  baseURL: 'http://localhost:4003',
+});

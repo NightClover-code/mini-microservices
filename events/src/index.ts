@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { queryAPI, commentsAPI, postsAPI } from './utils';
+import { queryAPI, commentsAPI, postsAPI, moderationAPI } from './utils';
 
 const app = express();
 
@@ -12,6 +12,7 @@ app.post('/events', (req, res) => {
   commentsAPI.post('/events', event);
   postsAPI.post('/events', event);
   queryAPI.post('/events', event);
+  moderationAPI.post('/events', event);
 
   res.send({ status: 'OK' });
 });

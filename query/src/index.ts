@@ -23,12 +23,12 @@ app.post('/events', (req, res) => {
   }
 
   if (type === 'CommentCreated') {
-    const { id, content, postId } = data;
+    const { id, content, postId, status } = data;
 
-    posts[postId].comments.push({ id, content });
+    posts[postId].comments.push({ id, content, status });
   }
 
-  res.status(201);
+  res.send({ status: 'OK' });
 });
 
 app.listen(4002, () => console.log(`Listening on 4002`));
