@@ -1,4 +1,4 @@
-export interface Post {
+export interface Posts {
   [id: string]: {
     id: string;
     title: string;
@@ -9,3 +9,5 @@ export interface Post {
     }[];
   };
 }
+
+export * from './helpers';
