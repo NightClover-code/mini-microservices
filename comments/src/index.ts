@@ -42,6 +42,8 @@ app.post('/events', (req, res) => {
     const { id, status, postId } = data;
 
     const comments = commentsByPostId[postId];
+
+    const comment = comments.find(comment => {});
   }
 
   res.send({ status: 'OK' });

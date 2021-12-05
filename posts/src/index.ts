@@ -9,11 +9,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const posts: any = {};
+const posts: Post = {};
 
 app.get('/posts', (req, res) => {
-  console.log(posts);
-
   res.send(posts);
 });
 

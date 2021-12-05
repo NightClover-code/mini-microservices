@@ -2,12 +2,10 @@ export interface Post {
   [id: string]: {
     id: string;
     title: string;
-    comments: Comment[];
+    comments: {
+      id: string;
+      content: string;
+      status: string;
+    }[];
   };
-}
-
-export interface Comment {
-  id: string;
-  content: string;
-  status: string;
 }
