@@ -2,7 +2,7 @@ import express from 'express';
 import { v4 as randomId } from 'uuid';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import { eventsAPI } from './utils';
+import { eventsAPI, Post } from './utils';
 
 const app = express();
 
@@ -12,6 +12,8 @@ app.use(cors());
 const posts: any = {};
 
 app.get('/posts', (req, res) => {
+  console.log(posts);
+
   res.send(posts);
 });
 

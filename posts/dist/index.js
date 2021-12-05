@@ -49,6 +49,7 @@ app.use(body_parser_1.default.json());
 app.use((0, cors_1.default)());
 var posts = {};
 app.get('/posts', function (req, res) {
+    console.log(posts);
     res.send(posts);
 });
 app.post('/posts', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {

@@ -2,14 +2,14 @@ import express from 'express';
 import { v4 as randomId } from 'uuid';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import { eventsAPI } from './utils';
+import { CommentsByPostId, eventsAPI } from './utils';
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
 
-const commentsByPostId: any = {};
+const commentsByPostId: CommentsByPostId = {};
 
 app.get('/posts/:id/comments', (req, res) => {
   res.send(commentsByPostId[req.params.id] || []);
@@ -36,7 +36,13 @@ app.post('/posts/:id/comments', async (req, res) => {
 });
 
 app.post('/events', (req, res) => {
-  console.log('Received Event', req.body.type);
+  const { type, data } = req.body;
+
+  if (type === 'CommentModerated') {
+    const { id, status, postId } = data;
+
+    const comments = commentsByPostId[postId];
+  }
 
   res.send({ status: 'OK' });
 });

@@ -7,4 +7,4 @@ content-type: application/json
 }
 
 ### getting comments
-GET http://localhost:4001/posts/1/comments
+GET http://localhost:4001/posts/b73d1411-f4f1-43f2-a82c-d9d72d8f75a0/comments

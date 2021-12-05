@@ -1,13 +1,14 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import { Post } from './utils';
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
 
-const posts: any = {};
+const posts: Post = {};
 
 app.get('/posts', (req, res) => {
   res.send(posts);
