@@ -35,15 +35,27 @@ app.post('/posts/:id/comments', async (req, res) => {
   res.status(201).send({ ...createdComment, postId });
 });
 
-app.post('/events', (req, res) => {
+app.post('/events', async (req, res) => {
   const { type, data } = req.body;
 
   if (type === 'CommentModerated') {
-    const { id, status, postId } = data;
+    const { id, status, postId, content } = data;
 
     const comments = commentsByPostId[postId];
 
-    const comment = comments.find(comment => {});
+    const comment = comments.find(comment => comment.id === id)!;
+
+    comment.status = status;
+
+    await eventsAPI.post('/events', {
+      type: 'CommentUpdated',
+      data: {
+        id,
+        content,
+        postId,
+        status,
+      },
+    });
   }
 
   res.send({ status: 'OK' });
