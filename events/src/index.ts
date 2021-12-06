@@ -13,7 +13,6 @@ app.post('/events', (req, res) => {
 
   events.push(event);
 
-  commentsAPI.post('/events', event);
   postsAPI.post('/events', event);
   queryAPI.post('/events', event);
   moderationAPI.post('/events', event);
