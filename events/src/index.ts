@@ -14,6 +14,7 @@ app.post('/events', (req, res) => {
   events.push(event);
 
   postsAPI.post('/events', event);
+  commentsAPI.post('/events', event);
   queryAPI.post('/events', event);
   moderationAPI.post('/events', event);
 
