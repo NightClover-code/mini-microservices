@@ -58,6 +58,8 @@ app.post('/events', async (req, res) => {
     });
   }
 
+  console.log('Received Event', req.body.type);
+
   res.send({ status: 'OK' });
 });
 

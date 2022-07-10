@@ -20,6 +20,8 @@ app.post('/events', (req, res) => {
 
   handleEvent(type as string, data, posts);
 
+  console.log('Received Event', req.body.type);
+
   res.send({ status: 'OK' });
 });
 
