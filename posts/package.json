@@ -6,7 +6,8 @@
   "scripts": {
     "start:build": "tsc -w",
     "start:dev": "nodemon dist/index.js",
-    "start": "concurrently yarn:start:*"
+    "start": "concurrently yarn:start:*",
+    "build": "node dist/index.js"
   },
   "dependencies": {
     "axios": "^0.24.0",
